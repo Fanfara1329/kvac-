@@ -1,0 +1,20 @@
+#include <iostream>
+
+int main() {
+    int a, b;
+    std::cin >> a;
+    int *n = new int[a];
+    for (int i = 0; i < a; i++)
+        std::cin >> n[i];
+    std::cin >> b;
+    for (int i = 0; i < a; i++) {
+        if (b >= n[i]) {
+            std::cout << i + 1;
+            delete [] n;
+            return 0;
+        }
+    }
+    std::cout << a + 1;
+    delete [] n;
+    return 0;
+}
