@@ -1,0 +1,50 @@
+#include <iostream>
+int m, n, k, a, b;
+
+void pprint(int **num) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (num[i][j] == -1)
+                std::cout << "* ";
+            else
+                std::cout << num[i][j] << ' ';
+        }
+        std::cout << '\n';
+    }
+}
+
+int main() {
+    std::cin >> m >> n >> k;
+    int **num{new int *[m]{}};
+    for (unsigned i{}; i < m; i++) {
+        num[i] = new int[n]{};
+    }
+    for (int i = 0; i < k; i++) {
+        std::cin >> a >> b;
+        a--;
+        b--;
+        num[a][b] = -1;
+        if (a && b && num[a - 1][b - 1] != -1)
+            num[a - 1][b - 1]++;
+        if (a && num[(a - 1)][b] != -1)
+            num[(a - 1)][b]++;
+        if (a && (n - 1 - b) && num[a - 1][b + 1] != -1)
+            num[a - 1][b + 1]++;
+        if ((n - 1 - b) && num[a][b + 1] != -1)
+            num[a][b + 1]++;
+        if (b && num[a][b - 1] != -1)
+            num[a][b - 1]++;
+        if ((m - 1 - a) && b && num[a + 1][b - 1] != -1)
+            num[a + 1][b - 1]++;
+        if ((m - 1 - a) && num[a + 1][b] != -1)
+            num[a + 1][b]++;
+        if ((m - 1 - a) && (n - 1 - b) && num[a + 1][b + 1] != -1)
+            num[a + 1][b + 1]++;
+    }
+    pprint(num);
+    for (unsigned i{}; i < m; i++) {
+        delete[] num[i];
+    }
+    delete[] num;
+    return 0;
+}
