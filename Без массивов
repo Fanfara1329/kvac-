@@ -1,0 +1,17 @@
+#include <iostream>
+
+void solve() {
+    int n;
+    std::cin >> n;
+    if (n) {
+        solve();
+        std::cout << n << " ";
+    }
+}
+
+int main() {
+    int a;
+    std::cin >> a;
+    solve();
+    return 0;
+}
