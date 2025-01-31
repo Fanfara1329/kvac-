@@ -1,19 +1,7 @@
 #include <iostream>
-int m, n, k, a, b;
-
-void pprint(int **num) {
-    for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            if (num[i][j] == -1)
-                std::cout << "* ";
-            else
-                std::cout << num[i][j] << ' ';
-        }
-        std::cout << '\n';
-    }
-}
 
 int main() {
+    int m, n, k, a, b;
     std::cin >> m >> n >> k;
     int **num{new int *[m]{}};
     for (unsigned i{}; i < m; i++) {
@@ -41,7 +29,15 @@ int main() {
         if ((m - 1 - a) && (n - 1 - b) && num[a + 1][b + 1] != -1)
             num[a + 1][b + 1]++;
     }
-    pprint(num);
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            if (num[i][j] == -1)
+                std::cout << "* ";
+            else
+                std::cout << num[i][j] << ' ';
+        }
+        std::cout << '\n';
+    }
     for (unsigned i{}; i < m; i++) {
         delete[] num[i];
     }
