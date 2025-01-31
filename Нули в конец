@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+    int a, k = 0;
+    std::cin >> a;
+    int *n = new int[a];
+    for (int i = 0; i < a; i++) {
+        std::cin >> n[i];
+        if (!n[i])
+            k++;
+        else
+            std::cout << n[i] << ' ';
+    }
+    for (int i = 0; i < k; i++) {
+        std:: cout << "0 ";
+    }
+    return 0;
+}
